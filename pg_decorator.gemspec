@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
   gem.email         = ["webervin@gmail.com"]
   gem.description   = %q{adds caller method as SQL comment}
   gem.summary       = %q{Makes ruby caller visible in PostgreSQL log}
-  gem.homepage      = ""
+  gem.homepage      = 'https://github.com/webervin/pg_decorator'
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
