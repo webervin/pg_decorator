@@ -6,7 +6,7 @@ module PgDecorator
       require_relative 'decorator'
       PG::Connection.module_eval do
         define_method(:app_name) { custom_app_name }
-        define_meetod(:app_root) { custom_app_root}
+        define_method(:app_root) { custom_app_root}
         include PgDecorator::Decorator
       end
       true
