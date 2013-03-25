@@ -1,3 +1,9 @@
+## dev
+
+BugFixes:
+
+  - pg gem dependency was missing from gemspec
+
 ## 0.0.4
 
 Features:
