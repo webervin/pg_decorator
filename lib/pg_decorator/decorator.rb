@@ -2,6 +2,9 @@ module PgDecorator
   module Decorator
     def self.included(instrumented_class)
       instrumented_class.class_eval do
+        alias_method :initialize_without_sql_decorator, :initialize
+        alias_method :initialize, :initialize_with_sql_decorator
+
         alias_method :async_exec_without_sql_decorator, :async_exec
         alias_method :async_exec, :async_exec_with_sql_decorator
 
@@ -41,6 +44,11 @@ module PgDecorator
       escape_string( str.gsub('*/','* /'))
     end
 
+    def initialize_with_sql_decorator(*args, &block)
+      initialize_without_sql_decorator(*args, &block)
+      exec_without_sql_decorator("set application_name = '#{escape_string(self.app_name)}';") {true}
+      self
+    end
 
     def async_exec_with_sql_decorator(sql,*args, &block)
       async_exec_without_sql_decorator(decorate_sql(sql), *args, &block)
