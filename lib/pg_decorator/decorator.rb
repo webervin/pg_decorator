@@ -28,8 +28,8 @@ module PgDecorator
     def decorate_sql(sql)
       last_line = caller.detect{|l|  l !~ /\.?(rvm|gem|vendor|rbenv|pg_decorator)/ }
       if last_line
-        if last_line.starts_with? Rails.root.to_s
-          last_line = last_line[Rails.root.to_s.length..-1]
+        if last_line.start_with? app_root
+          last_line = last_line[app_root.length..-1]
         end
         "/* #{ escape_string(app_name) } #{escape_comment(last_line)} */\n#{sql}"
       else

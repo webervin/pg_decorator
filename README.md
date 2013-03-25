@@ -32,11 +32,11 @@ in your ruby script add following:
 
      require 'rubygems'
      require 'pg_decorator'
-     PgDecorator::Injector.inject('AppToRuleWorld')
+     PgDecorator::Injector.inject('AppToRuleWorld', '/home/ruby/world_ruler)
 
 If you use Rails then you could create config/initializers/pg_decorator
 
-     PgDecorator::Injector.inject('AppToRuleWorld')
+     PgDecorator::Injector.inject(Rails.application.class.to_s.split("::").first, Rails.root.to_s)
 
 ## Contributing
 
