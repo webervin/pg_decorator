@@ -1,7 +1,7 @@
 ## dev
 
 BugFixes:
-
+  - codestyle changes
   - pg gem dependency was missing from gemspec
 
 ## 0.0.4
